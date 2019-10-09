@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="w.document">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:group ref="texto_1"/>
+
+        <xs:element name="w:sectPr">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="texto_2"/>
+            </xs:sequence>
+            <xs:attribute name="w:rsidR" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:group name="texto_1">
+    <xs:all>
+
+      <xs:element name="w:r">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="w.r"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="w.bookmarkStart">
+        <xs:complexType>
+          <xs:attribute name="w:id" type="xs:integer"/>
+          <xs:attribute name="w:name" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="bookmarkEnd">
+        <xs:complexType>
+          <xs:attribute name="w:id" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:all>
+  </xs:group>
+
+  <xs:group name="w.r">
+    <xs:sequence>
+
+      <xs:element name="w:rPr" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="w:i"/>
+            <xs:element name="w:u">
+              <xs:complexType>
+                <xs:attribute name="w:val" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="w:b"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="w:t" type="xs:string">
+        <xs:complexType>
+          <xs:attribute name="xml:space" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:sequence>
+    <xs:attribute name="w:rsidRPr" type="xs:string" minOccurs="0"/>
+  </xs:group>
+
+  <xs:group name="texto_2">
+    <xs:sequence>
+
+      <xs:element name="w:pgSz">
+        <xs:complexType>
+          <xs:attribute name="w:w" type="xs:integer"/>
+          <xs:attribute name="w:h" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="w:pgMar">
+        <xs:complexType>
+          <xs:attribute name="w:top" type="xs:integer"/>
+          <xs:attribute name="w:right" type="xs:integer"/>
+          <xs:attribute name="w:bottom" type="xs:integer"/>
+          <xs:attribute name="w:left" type="xs:integer"/>
+          <xs:attribute name="w:header" type="xs:integer"/>
+          <xs:attribute name="w:footer" type="xs:integer"/>
+          <xs:attribute name="w:gutter" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="w:cols">
+        <xs:complexType>
+          <xs:attribute name="w:space" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="w:docGrid">
+        <xs:complexType>
+          <xs:attribute name="w:linePitch" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:group>
+
+</xs:schema>

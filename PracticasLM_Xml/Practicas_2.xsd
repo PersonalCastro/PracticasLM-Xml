@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="fabrica_coches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="coche" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:group ref="grupo_coche"/>
+            </xs:sequence>
+          <xs:attribute name="numero_bastidor" type="tipoBastidor"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="tipoBastidor">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\dA-HJ-NPR-Z]{17}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:group name="grupo_coche">
+    <xs:sequence>
+      <xs:element name="ensamblador">
+        <xs:complexType>
+          <xs:sequence>
+
+            <xs:element name="info_trabajador">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:group ref="grupo_info"/>
+                </xs:sequence>
+              <xs:attribute name="dni" type="tipo_dni"/>
+              </xs:complexType>
+            </xs:element>
+
+            <xs:element name="parte_coche" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:group ref="grupoParte_coche"/>
+                </xs:sequence>
+              <xs:attribute name="nombre" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:simpleType name="tipo_dni">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{0,1}-\d{7}-[1-9]-[A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:group name="grupo_info">
+      <xs:sequence>
+
+        <xs:element name="nombre">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="35"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="apellidos">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="70"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="direccion">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="200"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="localidad">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="100"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="codigo_postal">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="\d{5}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="provincia">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="100"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="fecha_incorporacion">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[0-3][0-9]/[0-1][0-9]/[1-2][0-9]{3}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+      </xs:sequence>
+  </xs:group>
+
+
+
+  <xs:group name="grupoParte_coche">
+    <xs:sequence>
+
+      <xs:element name="obrero" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="info_trabajador">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:group ref="grupo_info"/>
+                </xs:sequence>
+              <xs:attribute name="dni" type="tipo_dni"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="pintor" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="info_trabajador">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:group ref="grupo_info"/>
+                </xs:sequence>
+              <xs:attribute name="dni" type="tipo_dni"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="pieza">
+        <xs:complexType>
+          <xs:attributeGroup ref="grupo_atributos_pieza"/>
+        </xs:complexType>
+      </xs:element>
+
+
+    </xs:sequence>
+  </xs:group>
+
+  <xs:attributeGroup name="grupo_atributos_pieza">
+    <xs:attribute name="estado" type="tipo_estado" use="required"/>
+    <xs:attribute name="numero_ref" type="tipo_numero_ref" use="required"/>
+    <xs:attribute name="nombre_pieza" type="tipo_nombre_pieza" use="required"/>
+    <xs:attribute name="peso" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="stock" type="xs:positiveInteger" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="tipo_estado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="comprada"/>
+      <xs:enumeration value="fabricada"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipo_numero_ref">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]-\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipo_nombre_pieza">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE fabrica_coches [
+<!ELEMENT fabrica_coches (coche)* >
+<!ELEMENT coche (ensamblador, parte_coche+)>
+<!ATTLIST coches numero_bastidor ID #REQUIRED>
+  <!ELEMENT ensamblador (info_trabajador)>
+  <!ELEMENT parte_coche (obrero, pintor?, pieza+)>
+    <!ELEMENT obrero (info_trabajador)>
+    <!ELEMENT pintor (info_trabajador, fecha_examen)>
+      <!ELEMENT fecha_examen (#PCDATA)>
+    <!ELEMENT pieza EMPTY>
+    <!ATTLIST pieza estado CDATA #FIXED "comprada|fabricada">
+    <!ATTLIST pieza numero_ref ID #REQUIRED>
+    <!ATTLIST pieza nombre_pieza CDATA #REQUIRED>
+    <!ATTLIST pieza peso CDATA #REQUIRED>
+    <!ATTLIST pieza stock CDATA #REQUIRED>
+
+  <!ELEMENT info_trabajador (nombre, apellidos, direccion, localidad, codigo_postal, provincia, fecha_incorporacion)>
+  <!ATTLIST info_trabajador dni ID #REQUIRED>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT apellidos (#PCDATA)>
+    <!ELEMENT direccion (#PCDATA)>
+    <!ELEMENT localidad (#PCDATA)>
+    <!ELEMENT codigo_postal (#PCDATA)>
+    <!ELEMENT provincia (#PCDATA)>
+    <!ELEMENT fecha_incorporacion (#PCDATA)>
+]>
+
+<fabrica_coches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Practicas_2.xsd">>
+
+  <coche numero_bastidor="123456789ASDFGHJ">
+    <ensamblador>
+      <info_trabajador dni="12348765F">
+        <nombre> Pepe </nombre>
+        <apellidos> Saul Lastra </apellidos>
+        <direccion> san lazaro nº4 </direccion>
+        <localidad> Jun </localidad>
+        <codigo_postal>18013</codigo_postal>
+        <provincia> Granada </provincia>
+        <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+      </info_trabajador>
+
+      <parte_coche nombre="chasis">
+        <obrero>
+            <info_trabajador dni="62348345F">
+            <nombre> Paco </nombre>
+            <apellidos> Saul Lastra </apellidos>
+            <direccion> san lazaro nº5 </direccion>
+            <localidad> Jun </localidad>
+            <codigo_postal>18013</codigo_postal>
+            <provincia> Granada </provincia>
+            <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+          </info_trabajador>
+        </obrero>
+        <pintor>
+          <info_trabajador dni="12345278F">
+            <nombre> Nico </nombre>
+            <apellidos> Saul Lastra </apellidos>
+            <direccion> san lazaro nº6 </direccion>
+            <localidad> Jun </localidad>
+            <codigo_postal>18013</codigo_postal>
+            <provincia> Granada </provincia>
+            <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+          </info_trabajador>
+          <fecha_examen> 10/03/2000</fecha_examen>
+        </pintor>
+        <pieza estado="comprada" numero_ref="A6534" nombre_pieza="tornillo" peso="50 g" stock="100"/>
+        <pieza estado="comprada" numero_ref="A1344" nombre_pieza="muelle" peso="50 g" stock="100"/>
+        <pieza estado="comprada" numero_ref="A1457" nombre_pieza="tuerca" peso="150 g" stock="121"/>
+        <pieza estado="comprada" numero_ref="A6544" nombre_pieza="metal" peso="2000 g" stock="5"/>
+      </parte_coche>
+
+      <parte_coche nombre="interior">
+        <obrero>
+          <info_trabajador dni="12345678H">
+            <nombre> Paco </nombre>
+            <apellidos> Saul Lastra </apellidos>
+            <direccion> san lazaro nº7 </direccion>
+            <localidad> Jun </localidad>
+            <codigo_postal>18013</codigo_postal>
+            <provincia> Granada </provincia>
+            <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+          </info_trabajador>
+        </obrero>
+        <pieza estado="fabricada" numero_ref="A5434" nombre_pieza="tornillo" peso="50 g" stock="100"/>
+      </parte_coche>
+
+      <parte_coche nombre="puerta">
+        <obrero>
+          <info_trabajador dni="14354568H">
+            <nombre> Paco </nombre>
+            <apellidos> Saul Lastra </apellidos>
+            <direccion> san lazaro nº8 </direccion>
+            <localidad> Jun </localidad>
+            <codigo_postal>18013</codigo_postal>
+            <provincia> Granada </provincia>
+            <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+          </info_trabajador>
+        </obrero>
+        <pieza estado="fabricada" numero_ref="A1234" nombre_pieza="tornillo" peso="50 g" stock="100"/>
+        <pieza estado="comprada" numero_ref="A1234" nombre_pieza="muelle" peso="50 g" stock="100"/>
+        <pieza estado="comprada" numero_ref="A1744" nombre_pieza="metal" peso="2000 g" stock="5"/>
+      </parte_coche>
+
+    </ensamblador>
+  </coche>
+
+  <coche numero_bastidor="123456789ASDFGHJ">
+    <ensamblador>
+      <info_trabajador dni="12348765F">
+        <nombre> Pepe </nombre>
+        <apellidos> Saul Lastra </apellidos>
+        <direccion> san lazaro nº9 </direccion>
+        <localidad> Jun </localidad>
+        <codigo_postal>18013</codigo_postal>
+        <provincia> Granada </provincia>
+        <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+      </info_trabajador>
+
+      <parte_coche nombre="interior">
+        <obrero>
+          <info_trabajador dni="12363578H">
+            <nombre> Paco </nombre>
+            <apellidos> Saul Lastra </apellidos>
+            <direccion> san lazaro nº10 </direccion>
+            <localidad> Jun </localidad>
+            <codigo_postal>18013</codigo_postal>
+            <provincia> Granada </provincia>
+            <fecha_incorporacion> 10/02/2000 </fecha_incorporacion>
+          </info_trabajador>
+        </obrero>
+        <pieza estado="fabricada" numero_ref="A1234" nombre_pieza="tornillo" peso="50 g" stock="100"/>
+        <pieza estado="comprada" numero_ref="A1234" nombre_pieza="muelle" peso="50 g" stock="100"/>
+        <pieza estado="fabricada" numero_ref="A1437" nombre_pieza="tuerca" peso="150 g" stock="121"/>
+        <pieza estado="comprada" numero_ref="A1744" nombre_pieza="metal" peso="2000 g" stock="5"/>
+      </parte_coche>
+
+    </ensamblador>
+  </coche>
+
+</fabrica_coches>

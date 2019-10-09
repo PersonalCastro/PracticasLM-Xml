@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE criminales [
+<!ELEMENT criminales (criminal)*>
+<!ELEMENT criminal (nombre, fecha_nacimiento, altura, descripcion_fisica, historial_medico? ,direccion_completa, (libertad | carcel)?, lista_delitos?, juzgado?) >
+<!ATTLIST criminal dni ID #REQUIRED>
+<!ATTLIST criminal sexo CDATA #FIXED "H|M">
+  <!ELEMENT nombre (#PCDATA)>
+  <!ELEMENT fecha_nacimiento (#PCDATA)>
+  <!ELEMENT altura (#PCDATA)>
+  <!ELEMENT descripcion_fisica (#PCDATA)>
+  <!ELEMENT direccion_completa (direccion, localidad, codigo_postal, provincia)>
+    <!ELEMENT direccion (#PCDATA)>
+    <!ELEMENT localidad (#PCDATA)>
+    <!ELEMENT codigo_postal (#PCDATA)>
+    <!ELEMENT provincia (#PCDATA)>
+  <!ELEMENT historial_medico (#PCDATA)>
+  <!ELEMENT libertad EMPTY>
+  <!ELEMENT carcel EMPTY>
+  <!ELEMENT lista_delitos (#PCDATA)>
+  <!ELEMENT juzgado (pena?)>
+    <!ELEMENT pena (#PCDATA)>
+    <!ATTLIST pena estado CDATA #FIXED "cumpliendo | finalizada">
+]>
+<criminales xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Practicas_1.xsd">
+
+  <criminal dni="76591628H" sexo="H">
+    <nombre> Castro Salazar, Pablo </nombre>
+    <fecha_nacimiento> 18/09/2000 </fecha_nacimiento>
+    <altura> 180 cm.</altura>
+    <descripcion_fisica> Su color de pelo es castaño y tiene los ojos verdes </descripcion_fisica>
+    <direccion_completa>
+      <direccion> Cristobal de morales n.34 </direccion>
+      <localidad> Granada </localidad>
+      <codigo_postal> 18013 </codigo_postal>
+      <provincia> Granada </provincia>
+    </direccion_completa>
+    <libertad/>
+  </criminal>
+
+  <criminal dni="97235678F" sexo="M">
+    <nombre> Muñoz Gutierrez , Alejandro </nombre>
+    <fecha_nacimiento> 05/05/2000 </fecha_nacimiento>
+    <altura> 170 cm.</altura>
+    <descripcion_fisica> Su color de pelo es pelirrojo y tiene los ojos marrones </descripcion_fisica>
+    <direccion_completa>
+      <direccion> Los rosales n.6 </direccion>
+      <localidad> Jun </localidad>
+      <codigo_postal> 18213 </codigo_postal>
+      <provincia> Granada </provincia>
+    </direccion_completa>
+    <historial_medico>
+          Transtorno mental cronico: Esquizofrenia
+    </historial_medico>
+    <libertad/>
+    <lista_delitos>
+      1. Poner piña a la Pizza
+    </lista_delitos>
+    <juzgado>
+      <pena estado="finalizada"> Servicios comunitarios </pena>
+    </juzgado>
+  </criminal>
+
+  <criminal dni="15516959D" sexo="M">
+    <nombre> Ortega Bastida , David </nombre>
+    <fecha_nacimiento> 21/09/1998 </fecha_nacimiento>
+    <altura> 175 cm.</altura>
+    <descripcion_fisica> Su color de pelo es rubio y tiene los ojos verdes </descripcion_fisica>
+    <direccion_completa>
+      <direccion> Olivo n.8 </direccion>
+      <localidad> Armilla </localidad>
+      <codigo_postal> 18513 </codigo_postal>
+      <provincia> Granada </provincia>
+    </direccion_completa>
+    <carcel/>
+    <lista_delitos>
+      1. feat con Pitbull
+    </lista_delitos>
+    <juzgado>
+      <pena estado="cumpliendo"> Cadena perpetua </pena>
+    </juzgado>
+  </criminal>
+
+</criminales>
